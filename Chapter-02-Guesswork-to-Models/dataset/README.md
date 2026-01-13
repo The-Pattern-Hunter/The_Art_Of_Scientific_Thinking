@@ -1,17 +1,5 @@
 # Chapter 2 Datasets - Complete Guide
 
-## 📚 Two Dataset Collections
-
-Chapter 2 has **two complementary sets** of datasets:
-
-### **Set A: Core Chapter Examples** (In your existing repo)
-These align with the actual chapter narrative and are used in the main text.
-
-### **Set B: Extended Practice Problems** (Just created)
-These provide additional biological applications for extended learning.
-
----
-
 ## 🎯 Set A: Core Chapter Examples (Existing)
 
 **Purpose:** Direct support for chapter narrative (Rajesh, Kamala, study hours)
