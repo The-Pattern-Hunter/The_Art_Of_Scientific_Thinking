@@ -1,0 +1,7 @@
+TimeOfDay,Hour,Price_Rs_per_kg,Kg_Sold,Revenue_Rs
+Morning,8,40,25,1000
+MidMorning,10,38,30,1140
+Noon,12,35,28,980
+Afternoon,14,32,35,1120
+Evening,16,28,40,1120
+Late,18,20,30,600

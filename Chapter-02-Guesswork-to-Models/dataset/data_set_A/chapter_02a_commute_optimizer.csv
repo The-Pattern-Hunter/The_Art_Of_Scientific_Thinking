@@ -1,0 +1,11 @@
+Day,Week,Route,Distance_km,TrafficLevel,Time_min
+Monday,1,NH16,12,8,45
+Tuesday,1,Janpath,10,6,38
+Wednesday,1,NH16,12,9,50
+Thursday,1,Janpath,10,5,32
+Friday,1,Patrapada,11,7,42
+Monday,2,NH16,12,8,46
+Tuesday,2,Janpath,10,7,40
+Wednesday,2,Patrapada,11,6,38
+Thursday,2,NH16,12,7,43
+Friday,2,Janpath,10,8,44
