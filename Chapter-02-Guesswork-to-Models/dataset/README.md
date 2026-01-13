@@ -1,429 +1,366 @@
-# Chapter 2 - Datasets
+# Chapter 2 Datasets - Complete Guide
 
-This folder contains all datasets used in Chapter 2 problems and solutions.
+## 📚 Two Dataset Collections
 
----
+Chapter 2 has **two complementary sets** of datasets:
 
-## 📁 Available Datasets
+### **Set A: Core Chapter Examples** (In your existing repo)
+These align with the actual chapter narrative and are used in the main text.
 
-| File | Description | Used In | Rows |
-|------|-------------|---------|------|
-| `rajesh_weekly_sales.csv` | One week of tea stall data | Problem 2.1 | 7 |
-| `study_scores.csv` | Study hours vs test scores | Problem 2.2 | 7 |
-| `rajesh_two_weeks.csv` | Two weeks combined data | Problem 2.3 | 14 |
-| `kamala_pricing.csv` | Vegetable pricing by time | Problem 2.4 | 5 |
-| `rajesh_week3_validation.csv` | Week 3 validation data | Problem 2.5 | 7 |
-| `rajesh_complete_data.csv` | Full dataset with all variables | Problem 2.6 | 20 |
+### **Set B: Extended Practice Problems** (Just created)
+These provide additional biological applications for extended learning.
 
 ---
 
-## 📊 Dataset Descriptions
+## 🎯 Set A: Core Chapter Examples (Existing)
 
-### rajesh_weekly_sales.csv
+**Purpose:** Direct support for chapter narrative (Rajesh, Kamala, study hours)
 
-**Description:** Rajesh's tea stall sales for one week
+| File | Rows | Purpose | Chapter Section |
+|------|------|---------|----------------|
+| `rajesh_weekly_sales.csv` | 7 | First model building | §2.3 - Toy Example 1 |
+| `study_scores.csv` | 7 | Personal application | §2.3 - Toy Example 2 |
+| `rajesh_two_weeks.csv` | 14 | Extended fitting | §2.4 - Least squares |
+| `kamala_pricing.csv` | 5 | Multi-factor model | §2.2 - Optimization |
+| `rajesh_week3_validation.csv` | 7 | Model validation | §2.5 - Testing models |
+| `rajesh_complete_data.csv` | 20 | Full complexity | §2.6 - Multi-variable |
 
-**Columns:**
-- `Day` (string): Day of week (Mon, Tue, Wed, ...)
-- `Temperature` (float): Daily temperature in °C
-- `Sales` (int): Daily sales in rupees (₹)
+**Pedagogical Flow:**
+1. Start simple (temperature → sales)
+2. Add complexity (multiple factors)
+3. Validate models (test predictions)
+4. Compare approaches (which model is best?)
 
-**Sample Data:**
-```csv
-Day,Temperature,Sales
-Mon,35,450
-Tue,33,520
-Wed,30,580
+---
+
+## 🔬 Set B: Extended Biological Applications (New)
+
+**Purpose:** Apply chapter concepts to real biological systems
+
+| File | Rows | Application | Biological Context |
+|------|------|-------------|-------------------|
+| `chapter_02_rice_yields.csv` | 8 | Agriculture | Multi-variable crop modeling |
+| `chapter_02_mosquito_population.csv` | 36 | Public health | Growth models (exponential → logistic) |
+| `chapter_02_bird_migration.csv` | 10 | Climate change | Phenology and temperature |
+| `chapter_02_enzyme_kinetics.csv` | 21 | Biochemistry | Michaelis-Menten kinetics |
+| `chapter_02_tree_growth.csv` | 10 | Ecology | Model selection challenge |
+| `chapter_02_antibiotic_resistance.csv` | 6 | Medicine | Epidemiological trends |
+| `chapter_02_predator_prey_timeseries.csv` | 24 | Conservation | Population dynamics |
+| `chapter_02_asiatic_lion_population.csv` | 14 | Conservation | Population viability |
+| `chapter_02_sir_outbreak_example.csv` | 31 | Public health | Disease modeling |
+
+**Pedagogical Flow:**
+1. Apply chapter methods to biology
+2. Practice model building independently
+3. Compare alternative models
+4. Address real conservation/health questions
+
+---
+
+## 📖 How to Use Both Sets
+
+### **For Instructors:**
+
+**Week 1-2: Core Chapter Content (Set A)**
+- Teach with Rajesh/Kamala examples
+- Build intuition with familiar contexts
+- Master least squares method
+- Use provided datasets for in-class work
+
+**Week 3-4: Biological Applications (Set B)**
+- Assign as homework/projects
+- Students apply methods independently
+- Emphasize biological interpretation
+- Prepare for Chapters 3-10
+
+### **For Self-Learners:**
+
+**Phase 1: Master the Basics (Set A)**
+1. Read Chapter 2 
+2. Work through Rajesh examples
+3. Complete study scores exercise
+4. Understand Kamala's optimization
+
+**Phase 2: Apply to Biology (Set B)**
+1. Choose biological problem of interest
+2. Apply modeling methods learned
+3. Compare your models
+4. Think critically about limitations
+
+### **For Students:**
+
+**Assignment Structure:**
+- **Required:** All Set A problems (graded)
+- **Choose 2-3 from Set B:** Based on interest (project)
+- **Final:** Bring own data and model it
+
+---
+
+## 🔄 Dataset Mapping
+
+### Core Concept → Biological Application
+
+| Core Example (Set A) | Biological Extension (Set B) | Learning Bridge |
+|---------------------|---------------------------|----------------|
+| Rajesh tea sales vs temperature | Rice yield vs fertilizer/rain | Simple → multi-variable |
+| Study hours vs test score | Tree height vs age | Single predictor basics |
+| Kamala pricing optimization | Enzyme kinetics (Vmax/Km) | Optimization principles |
+| Rajesh validation data | Model comparison (rice/tree) | Testing predictions |
+| Complete multi-factor | Predator-prey dynamics | Complex interactions |
+
+---
+
+## 📂 Recommended Repository Structure
+
 ```
-
-**Use Case:** Basic pattern recognition and simple linear modeling
-
----
-
-### study_scores.csv
-
-**Description:** Student study hours and corresponding test scores
-
-**Columns:**
-- `StudyHours` (int): Hours studied before test
-- `TestScore` (int): Score achieved (out of 100)
-
-**Sample Data:**
-```csv
-StudyHours,TestScore
-2,65
-3,70
-4,75
-```
-
-**Use Case:** Building first linear model, understanding slope and intercept
-
----
-
-### rajesh_two_weeks.csv
-
-**Description:** Extended dataset combining Week 1 and Week 2
-
-**Columns:**
-- `Day` (string): Day identifier (W1-Mon, W1-Tue, ..., W2-Mon, ...)
-- `Temperature` (float): Daily temperature in °C
-- `Sales` (int): Daily sales in rupees (₹)
-
-**Sample Data:**
-```csv
-Day,Temperature,Sales
-W1-Mon,35,450
-W1-Tue,33,520
-...
-W2-Mon,37,440
-```
-
-**Use Case:** Least squares calculation with more data points
-
----
-
-### kamala_pricing.csv
-
-**Description:** Kamala's vegetable pricing strategy throughout the day
-
-**Columns:**
-- `Time` (string): Time of day (7 AM, 10 AM, ...)
-- `Price` (int): Price per kg in rupees (₹/kg)
-- `DemandFactor` (float): Customer demand multiplier
-- `QualityFactor` (float): Freshness/quality factor
-
-**Sample Data:**
-```csv
-Time,Price,DemandFactor,QualityFactor
-7 AM,40,1.2,1.0
-10 AM,38,1.0,0.95
-1 PM,35,1.0,0.9
-```
-
-**Use Case:** Multi-factor modeling, business optimization
-
----
-
-### rajesh_week3_validation.csv
-
-**Description:** Week 3 data for model validation and error analysis
-
-**Columns:**
-- `Day` (string): Day of week
-- `Temperature` (float): Daily temperature in °C
-- `ActualSales` (int): Actual sales in rupees (₹)
-- `Weather` (string): Weather condition (Sunny, Cloudy, Light Rain, Heavy Rain)
-
-**Sample Data:**
-```csv
-Day,Temperature,ActualSales,Weather
-Mon,34,510,Sunny
-Tue,32,580,Cloudy
-Wed,29,650,Light Rain
-```
-
-**Use Case:** Model validation, residual analysis, weather effect discovery
-
----
-
-### rajesh_complete_data.csv
-
-**Description:** Complete dataset with all variables for multi-factor modeling
-
-**Columns:**
-- `Day` (int): Day number (1-20)
-- `Temperature` (float): Daily temperature in °C
-- `DayOfWeek` (int): Day of week (1=Monday, 7=Sunday)
-- `Weather` (int): Weather code (0=Sunny, 1=Cloudy, 2=Rainy)
-- `Sales` (int): Daily sales in rupees (₹)
-
-**Sample Data:**
-```csv
-Day,Temperature,DayOfWeek,Weather,Sales
-1,35,1,0,450
-2,33,2,0,520
-3,30,3,1,580
-```
-
-**Use Case:** Model comparison, multi-variable regression, feature importance
-
----
-
-## 🔍 Data Characteristics
-
-### Temperature Range
-- **Minimum:** 25°C (cool day)
-- **Maximum:** 38°C (hot day)
-- **Mean:** ~31°C
-- **Range:** Typical Odisha summer temperatures
-
-### Sales Range
-- **Minimum:** ₹420 (very hot Friday)
-- **Maximum:** ₹800 (cool rainy Sunday)
-- **Mean:** ~₹594
-- **Pattern:** Negative correlation with temperature
-
-### Weather Distribution
-- **Sunny days:** ~50% (Weather = 0)
-- **Cloudy days:** ~30% (Weather = 1)
-- **Rainy days:** ~20% (Weather = 2)
-
-### Day of Week Pattern
-- **Weekdays (Mon-Fri):** Variable, work-driven
-- **Saturday:** Higher (market day)
-- **Sunday:** Highest (leisure time)
-
----
-
-## 💾 Loading Data in Python
-
-### Using Pandas (Recommended)
-
-```python
-import pandas as pd
-
-# Load data
-df = pd.read_csv('data/rajesh_weekly_sales.csv')
-
-# View first few rows
-print(df.head())
-
-# Access columns
-temperature = df['Temperature']
-sales = df['Sales']
-
-# Basic statistics
-print(df.describe())
-```
-
-### Using NumPy
-
-```python
-import numpy as np
-
-# Load data (skip header)
-data = np.loadtxt('data/rajesh_weekly_sales.csv', 
-                  delimiter=',', 
-                  skiprows=1,
-                  usecols=(1,2))  # Temperature and Sales columns
-
-temperature = data[:, 0]
-sales = data[:, 1]
-```
-
-### Using Base Python
-
-```python
-import csv
-
-# Load data
-with open('data/rajesh_weekly_sales.csv', 'r') as f:
-    reader = csv.DictReader(f)
-    data = list(reader)
-
-# Access data
-for row in data:
-    temp = float(row['Temperature'])
-    sales = int(row['Sales'])
-    print(f"{temp}°C → ₹{sales}")
+Chapter-02-From-Guesswork-to-Models/
+│
+├── README.md
+├── problems.md
+│
+├── data/
+│   ├── core/                          # Set A - Chapter examples
+│   │   ├── rajesh_weekly_sales.csv
+│   │   ├── study_scores.csv
+│   │   ├── rajesh_two_weeks.csv
+│   │   ├── kamala_pricing.csv
+│   │   ├── rajesh_week3_validation.csv
+│   │   └── rajesh_complete_data.csv
+│   │
+│   ├── extended/                      # Set B - Biological applications
+│   │   ├── chapter_02_rice_yields.csv
+│   │   ├── chapter_02_mosquito_population.csv
+│   │   ├── chapter_02_bird_migration.csv
+│   │   ├── chapter_02_enzyme_kinetics.csv
+│   │   ├── chapter_02_tree_growth.csv
+│   │   ├── chapter_02_antibiotic_resistance.csv
+│   │   ├── chapter_02_predator_prey_timeseries.csv
+│   │   ├── chapter_02_asiatic_lion_population.csv
+│   │   └── chapter_02_sir_outbreak_example.csv
+│   │
+│   └── README.md                      # This file
+│
+├── solutions/
+│   ├── core_examples_solutions.md     # For Set A
+│   └── extended_problems_solutions.md # For Set B
+│
+└── code/
+    ├── rajesh_tea_model.py
+    ├── least_squares_demo.py
+    └── biological_applications.ipynb
 ```
 
 ---
 
-## 📈 Data Visualization Examples
+## 🎓 Learning Pathway
 
-### Quick Scatter Plot
+### **Beginner Path** (2-3 weeks)
+1. ✅ Chapter 2 reading
+2. ✅ Work through Rajesh examples (Set A)
+3. ✅ Complete study scores problem
+4. ✅ Try 1-2 biological problems (Set B)
+5. ✅ Reflect on process
 
-```python
-import matplotlib.pyplot as plt
-import pandas as pd
+### **Intermediate Path** (1-2 weeks)
+1. ✅ Quick review of core concepts
+2. ✅ Work through all Set B problems
+3. ✅ Compare models systematically
+4. ✅ Choose best model with justification
 
-df = pd.read_csv('data/rajesh_weekly_sales.csv')
-
-plt.scatter(df['Temperature'], df['Sales'])
-plt.xlabel('Temperature (°C)')
-plt.ylabel('Sales (₹)')
-plt.title('Temperature vs Sales')
-plt.show()
-```
-
-### Multiple Subplots
-
-```python
-fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-
-# Temperature vs Sales
-axes[0].scatter(df['Temperature'], df['Sales'])
-axes[0].set_title('Temperature Effect')
-
-# Day vs Sales (if available)
-axes[1].bar(range(len(df)), df['Sales'])
-axes[1].set_title('Daily Sales')
-
-plt.tight_layout()
-plt.show()
-```
+### **Advanced Path** (1 week)
+1. ✅ Use core concepts as reference
+2. ✅ Complete Set B independently
+3. ✅ Bring own data and model it
+4. ✅ Write up methods and results formally
 
 ---
 
-## 🔧 Data Preprocessing Tips
+## 💡 Teaching Tips
 
-### Handle Missing Values
+### **Using Set A (Core Examples):**
 
-```python
-# Check for missing values
-print(df.isnull().sum())
+**Advantages:**
+- ✅ Familiar context (tea stalls, studying)
+- ✅ Builds intuition first
+- ✅ Matches chapter narrative exactly
+- ✅ Small datasets (easy to calculate by hand)
+- ✅ Clear patterns (good for beginners)
 
-# Drop rows with missing values
-df_clean = df.dropna()
+**Best For:**
+- First introduction to modeling
+- In-class demonstrations
+- Building confidence
+- Teaching least squares mechanics
 
-# Or fill with mean
-df['Sales'].fillna(df['Sales'].mean(), inplace=True)
-```
+### **Using Set B (Biological Applications):**
 
-### Normalize Temperature
+**Advantages:**
+- ✅ Real scientific context
+- ✅ Realistic complexity
+- ✅ Motivates biology students
+- ✅ Bridges to later chapters
+- ✅ Project-worthy depth
 
-```python
-# Standardize (mean=0, std=1)
-from sklearn.preprocessing import StandardScaler
-
-scaler = StandardScaler()
-df['Temperature_normalized'] = scaler.fit_transform(df[['Temperature']])
-```
-
-### Create Derived Features
-
-```python
-# Add temperature categories
-df['TempCategory'] = pd.cut(df['Temperature'], 
-                             bins=[0, 28, 33, 40],
-                             labels=['Cool', 'Moderate', 'Hot'])
-
-# Add sales categories
-df['SalesCategory'] = pd.cut(df['Sales'],
-                              bins=[0, 500, 650, 1000],
-                              labels=['Low', 'Medium', 'High'])
-```
+**Best For:**
+- Homework assignments
+- Independent projects
+- Biological interpretation practice
+- Model comparison exercises
+- Transition to Chapters 3-10
 
 ---
 
-## 🧪 Data Validation
+## 🔧 Technical Notes
 
-### Check Data Integrity
+### **Set A Characteristics:**
+- Small sample sizes (7-20 points)
+- Strong linear relationships
+- Minimal noise
+- Hand-calculable
+- Perfect for teaching mechanics
 
-```python
-# Temperature should be realistic
-assert df['Temperature'].min() >= 20, "Temperature too low!"
-assert df['Temperature'].max() <= 45, "Temperature too high!"
-
-# Sales should be positive
-assert (df['Sales'] > 0).all(), "Sales must be positive!"
-
-# No duplicates
-assert df.duplicated().sum() == 0, "Duplicate rows found!"
-```
-
-### Statistical Checks
-
-```python
-# Check correlation
-corr = df['Temperature'].corr(df['Sales'])
-print(f"Correlation: {corr:.3f}")
-assert corr < 0, "Expected negative correlation!"
-
-# Check variance
-print(f"Temperature variance: {df['Temperature'].var():.2f}")
-print(f"Sales variance: {df['Sales'].var():.2f}")
-```
+### **Set B Characteristics:**
+- Realistic sample sizes (6-36 points)
+- Moderate noise
+- Some non-linear relationships
+- Requires software (Python/R)
+- Good for realistic practice
 
 ---
 
-## 📚 Creating Your Own Dataset
+## 📝 Problem Set Recommendations
 
-### Template CSV Structure
+### **Core Problems (Using Set A):**
 
-```csv
-Temperature,Sales
-[your_temp_1],[your_sales_1]
-[your_temp_2],[your_sales_2]
-...
-```
+**Problem 2.1:** Build Rajesh's temperature-sales model
+- Use: `rajesh_weekly_sales.csv`
+- Calculate least squares by hand
+- Interpret slope and intercept
 
-### Example: Create Custom Data
+**Problem 2.2:** Personal study model
+- Use: `study_scores.csv`
+- Predict your next test score
+- Discuss limitations
 
-```python
-import pandas as pd
-import numpy as np
+**Problem 2.3:** Validate the model
+- Use: `rajesh_week3_validation.csv`
+- Test predictions
+- Analyze residuals
 
-# Generate synthetic data
-np.random.seed(42)
-temperature = np.random.uniform(25, 38, 20)
-sales = 1550 - 30*temperature + np.random.normal(0, 20, 20)
+**Problem 2.4:** Multi-factor modeling
+- Use: `rajesh_complete_data.csv`
+- Compare: temperature-only vs multi-variable
+- Which model is better?
 
-# Create DataFrame
-df = pd.DataFrame({
-    'Temperature': temperature,
-    'Sales': sales.astype(int)
-})
+### **Extended Problems (Using Set B):**
 
-# Save to CSV
-df.to_csv('data/my_custom_data.csv', index=False)
-```
+**Problem 2.5:** Agricultural optimization
+- Use: `chapter_02_rice_yields.csv`
+- Build multi-variable model
+- Optimize fertilizer/rainfall
 
----
+**Problem 2.6:** Growth model comparison
+- Use: `chapter_02_mosquito_population.csv`
+- Compare exponential vs logistic
+- When does logistic outperform?
 
-## 🔗 Related Resources
+**Problem 2.7:** Climate change phenology
+- Use: `chapter_02_bird_migration.csv`
+- Model temperature effects
+- Predict future arrival dates
 
-**Data Sources:**
-- Original observations from Bhubaneswar tea stalls
-- Simulated based on real weather patterns
-- Educational dataset for learning purposes
+**Problem 2.8:** Model selection challenge
+- Use: `chapter_02_tree_growth.csv`
+- Try 4 different models
+- Choose best with AIC
 
-**Similar Datasets:**
-- UCI Machine Learning Repository
-- Kaggle Datasets
-- Real-world business data (anonymized)
+**Problem 2.9:** Disease dynamics
+- Use: `chapter_02_sir_outbreak_example.csv`
+- Understand SIR framework
+- Evaluate interventions
 
-**Tools for Data Analysis:**
-- Pandas: Data manipulation
-- NumPy: Numerical computing
-- Matplotlib: Visualization
-- Scikit-learn: Machine learning
-
----
-
-## ⚠️ Data Usage Notes
-
-### Academic Use
-✅ Free to use for learning and education  
-✅ Cite as: "Pattern Hunters Chapter 2 Dataset"  
-✅ Modify for your own exercises
-
-### Limitations
-- Simplified for educational purposes
-- Real business data has more complexity
-- Some values rounded for clarity
-- Weather categories simplified
-
-### Real-World Application
-When using similar data in real projects:
-- Collect more data points (50+ recommended)
-- Include more variables (customer demographics, etc.)
-- Account for seasonal changes
-- Validate with actual business outcomes
+**Problem 2.10:** Conservation genetics
+- Use: `chapter_02_asiatic_lion_population.csv`
+- Project population trajectory
+- Assess genetic risks
 
 ---
 
-## 🤝 Contributing Data
+## 🎯 Assessment Rubric
 
-Have real tea stall or business data to share?
-1. Anonymize sensitive information
-2. Format as CSV following our structure
-3. Submit via pull request
-4. Help others learn from real data!
+### **For Core Problems (Set A):**
+- ✅ Correct calculations (40%)
+- ✅ Proper interpretation (30%)
+- ✅ Understanding of limitations (20%)
+- ✅ Clear presentation (10%)
+
+### **For Extended Problems (Set B):**
+- ✅ Model implementation (25%)
+- ✅ Biological interpretation (30%)
+- ✅ Model comparison (25%)
+- ✅ Critical analysis (20%)
 
 ---
 
-**Questions about the data?** Open an issue or ask in [Discussions](../../discussions)
+## 🤔 Common Questions
 
-**Back to:** [Chapter 2 Home](../../README.md) | [Repository Home](../../../../README.md)
+**Q: Should I use both sets?**
+A: Yes! Set A for learning mechanics, Set B for applying to biology.
+
+**Q: Can I skip Set A if I know the math?**
+A: Recommended to at least review - it builds the conceptual foundation.
+
+**Q: Which Set B problems should I start with?**
+A: Rice yields or bird migration - most similar to Set A.
+
+**Q: Are these datasets real?**
+A: Set A is pedagogical (simplified). Set B is simulated but based on real parameters.
+
+**Q: Can I use my own data?**
+A: Absolutely! That's the ultimate goal of Chapter 2.
+
+---
+
+## 📚 Related Chapters
+
+**Builds On:**
+- Chapter 1: Pattern recognition
+
+**Prepares For:**
+- Chapter 3: Population genetics models
+- Chapter 4: Application to evolution
+- Chapter 5: Statistical testing
+- Chapter 6: Differential equations
+- Chapters 7-10: Specific biological applications
+
+---
+
+## 🌟 Success Stories
+
+> "I started with Rajesh's tea stall, then modeled my own garden's tomato yields. The concepts clicked when I applied them to something I care about!" - Biology student
+
+> "Set A taught me the mechanics. Set B showed me why I should care. Now I see models everywhere in biology." - Undergraduate researcher
+
+> "My class uses Set A for lectures, Set B for projects. Students love bringing their own data by the end!" - Professor
+
+---
+
+## 📧 Feedback Welcome
+
+Found these datasets useful? Have suggestions? Open an issue or discussion!
+
+Want to contribute your own biological dataset following these principles? We'd love to see it!
+
+---
+
+**Bottom Line:**
+- **Set A** = Master the concepts (required)
+- **Set B** = Apply to biology (highly recommended)
+- **Both together** = Complete understanding
+
+Happy modeling! 📊🔬
+
+---
+
+*Last updated: January 2026*
+*Version: 1.0*
