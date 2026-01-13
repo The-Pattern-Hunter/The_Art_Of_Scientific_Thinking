@@ -1,0 +1,37 @@
+Day,Population_Count,Weather,Temperature_C,Humidity_Percent,Notes
+0,100,Sunny,32,65,Initial population
+1,118,Sunny,33,62,
+2,139,Partly Cloudy,31,68,
+3,164,Sunny,34,60,Rapid growth phase
+4,193,Sunny,35,58,
+5,228,Sunny,33,63,Doubling complete (5 days)
+6,269,Cloudy,30,72,Growth slowing slightly
+7,317,Sunny,32,65,
+8,374,Sunny,34,61,
+9,441,Partly Cloudy,33,67,
+10,520,Sunny,35,59,Second doubling
+11,613,Sunny,34,62,
+12,722,Cloudy,29,75,Weather effect visible
+13,851,Partly Cloudy,31,70,
+14,1003,Sunny,33,64,
+15,1182,Sunny,34,61,Third doubling
+16,1393,Sunny,35,60,
+17,1642,Sunny,33,65,
+18,1934,Cloudy,30,73,
+19,2279,Partly Cloudy,32,68,
+20,2685,Sunny,34,62,Fourth doubling
+21,3163,Sunny,35,59,
+22,3726,Sunny,33,64,Approaching capacity
+23,4390,Partly Cloudy,31,69,
+24,5173,Sunny,32,66,Growth rate declining
+25,6093,Sunny,34,61,Nearing carrying capacity
+26,7176,Cloudy,29,74,
+27,8451,Sunny,33,65,Logistic phase evident
+28,9049,Sunny,34,62,
+29,9521,Partly Cloudy,32,67,
+30,9798,Sunny,33,64,Approaching maximum
+31,9901,Cloudy,30,71,
+32,9951,Sunny,32,66,Near equilibrium
+33,9976,Sunny,34,63,
+34,9988,Partly Cloudy,33,68,
+35,9994,Sunny,35,60,Stable at capacity

@@ -1,0 +1,11 @@
+Year,Arrival_Day_of_Year,Arrival_Date,Departure_Temperature_C,Departure_Location_Latitude,Flight_Duration_Days,Number_of_Birds,Weather_Conditions
+2014,285,October 12,8.2,68.5,42,1847,Clear
+2015,290,October 17,10.1,68.5,45,1923,Partly Cloudy
+2016,282,October 8,7.5,68.5,40,2156,Clear
+2017,288,October 15,9.3,68.5,44,2034,Windy
+2018,280,October 7,6.8,68.5,39,2287,Clear
+2019,292,October 19,10.8,68.5,46,1876,Stormy
+2020,286,October 12,8.9,68.5,43,2091,Partly Cloudy
+2021,279,October 6,6.2,68.5,38,2398,Clear
+2022,291,October 18,10.5,68.5,45,1812,Cloudy
+2023,283,October 10,7.8,68.5,41,2178,Clear

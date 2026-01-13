@@ -1,0 +1,7 @@
+Year,Resistant_Percentage,Total_Infections_Tested,Resistant_Cases,Antibiotic_Usage_DDD_per_1000,Hospital_Beds,ICU_Beds,Notes
+2018,5.2,1847,96,450,250,20,Baseline year
+2019,7.1,1923,137,478,250,22,Gradual increase
+2020,9.8,2156,211,520,280,25,COVID pandemic effect
+2021,12.4,2034,252,495,280,28,Post-COVID monitoring
+2022,14.9,2287,341,512,300,30,Stewardship program initiated
+2023,18.1,2091,378,485,300,32,Current status

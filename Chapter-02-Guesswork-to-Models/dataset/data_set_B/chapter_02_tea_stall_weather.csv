@@ -1,0 +1,15 @@
+Day,Day_of_Week,Weather,Customers,Temperature_C,Rainfall_mm,Holiday,Time_Open_Hours
+1,Monday,Sunny,68,28,0,No,12
+2,Tuesday,Cloudy,54,26,0,No,12
+3,Wednesday,Rainy,32,24,15,No,10
+4,Thursday,Sunny,72,30,0,No,12
+5,Friday,Rainy,28,22,22,No,9
+6,Saturday,Sunny,65,29,0,No,11
+7,Sunday,Cloudy,48,25,0,No,10
+8,Monday,Partly_Cloudy,62,27,0,No,12
+9,Tuesday,Sunny,75,31,0,No,12
+10,Wednesday,Sunny,70,29,0,No,12
+11,Thursday,Rainy,30,23,18,No,9
+12,Friday,Cloudy,58,26,0,No,12
+13,Saturday,Sunny,68,30,0,No,11
+14,Sunday,Rainy,35,24,12,No,8
