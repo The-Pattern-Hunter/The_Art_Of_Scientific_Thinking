@@ -1,819 +1,471 @@
-# Chapter 2 - Datasets
-## From Guesswork to Models: The Art of Scientific Thinking
+# Chapter 2 Set A: Datasets Documentation
+## From Guesswork to Models - The Art of Scientific Thinking
 
-This folder contains all datasets used in Chapter 2 problems and solutions.
-
----
-
-## 📁 Dataset Collections
-
-Chapter 2 provides **two complementary sets** of datasets for different learning stages:
-
-### **Core Examples** (Follow chapter narrative)
-Simple, hand-calculable datasets that build modeling intuition through Rajesh's tea stall and Kamala's vegetable pricing stories.
-
-### **Extended Applications** (Apply to biology)
-Realistic biological datasets for independent practice applying modeling techniques to real-world problems.
+This document describes all datasets for Chapter 2 Set A problems, aligned with the book's core concepts: simple linear regression, least squares method, and model building from real-world observations.
 
 ---
 
-## 📊 Core Example Datasets
+## Overview of Chapter 2 Concepts
 
-These directly support the chapter narrative and can be calculated by hand.
+**Core Topics:**
+- Pattern recognition in everyday life
+- Transforming intuition into mathematical models
+- Least squares regression method
+- Linear relationships and correlation
+- Model assumptions and limitations
+- "All models are wrong, but some are useful" (Box's Law)
 
-| File | Rows | Used In | Context |
-|------|------|---------|---------|
-| `rajesh_weekly_sales.csv` | 7 | Problem 2.1 | Temperature vs sales (first model) |
-| `study_scores.csv` | 7 | Problem 2.2 | Study hours vs test scores |
-| `rajesh_two_weeks.csv` | 14 | Problem 2.3 | Extended least squares |
-| `kamala_pricing.csv` | 5 | Problem 2.4 | Optimization problem |
-| `rajesh_week3_validation.csv` | 7 | Problem 2.5 | Model validation |
-| `rajesh_complete_data.csv` | 20 | Problem 2.6 | Multi-variable modeling |
-
-**Start here** if you're new to mathematical modeling!
-
----
-
-## 🔬 Extended Biological Datasets
-
-Apply chapter concepts to real biological systems with realistic complexity.
-
-| # | File | Rows | Application | Model Type |
-|---|------|------|-------------|------------|
-| 1 | `chapter_02_rice_yields.csv` | 8 | Agriculture | Multi-variable regression |
-| 2 | `chapter_02_mosquito_population.csv` | 36 | Public health | Exponential/Logistic growth |
-| 3 | `chapter_02_bird_migration.csv` | 10 | Climate change | Temperature trends |
-| 4 | `chapter_02_enzyme_kinetics.csv` | 21 | Biochemistry | Michaelis-Menten |
-| 5 | `chapter_02_tree_growth.csv` | 10 | Ecology | Model selection |
-| 6 | `chapter_02_tea_stall_weather.csv` | 14 | Business | Categorical regression |
-| 7 | `chapter_02_antibiotic_resistance.csv` | 6 | Medicine | Epidemiological trends |
-| 8 | `chapter_02_predator_prey_timeseries.csv` | 24 | Conservation | Population dynamics |
-| 9 | `chapter_02_asiatic_lion_population.csv` | 14 | Conservation | Population viability |
-| 10 | `chapter_02_sir_outbreak_example.csv` | 31 | Public health | Disease modeling |
+**Mathematical Skills:**
+- Calculating means and deviations
+- Slope and intercept calculation
+- R² (coefficient of determination)
+- Residual analysis
+- Prediction and validation
 
 ---
 
-## 📖 Detailed Dataset Descriptions
+## Dataset 1: Rajesh's Weekly Sales Pattern
+**File:** `chapter_02a_rajesh_weekly.csv`  
+**Problem:** 2A.1 (⭐ Easy)  
+**Concept:** Pattern recognition, basic averaging, qualitative to quantitative
 
-### Core Example Datasets
+### Description
+Rajesh tracks his tea stall for one complete week to understand customer patterns and revenue fluctuations.
 
-#### 1. `rajesh_weekly_sales.csv`
+### Variables
+| Column | Type | Description | Unit |
+|--------|------|-------------|------|
+| Day | String | Day of the week | - |
+| DayNum | Integer | Day number (1=Mon, 7=Sun) | - |
+| Revenue | Integer | Daily sales revenue | ₹ (Rupees) |
+| Customers | Integer | Number of customers served | count |
 
-**Description:** Rajesh's tea stall sales for one week (Chapter opening example)
+### Data Summary
+- **Observations:** 7 (one complete week)
+- **Mean Revenue:** ₹467.14
+- **Mean Customers:** 46.7
+- **Pattern:** Weekdays (Mon-Fri) outperform weekends (Sat-Sun)
 
-**Columns:**
-- `Day` (string): Day of week (Mon, Tue, Wed, Thu, Fri, Sat, Sun)
-- `Temperature` (float): Daily temperature in °C
-- `Sales` (int): Daily sales in rupees (₹)
+### Research Questions
+1. What is the weekly revenue pattern?
+2. Do weekdays differ significantly from weekends?
+3. Can we predict next week's Monday revenue?
+4. What factors might cause deviations?
 
-**Sample Data:**
-```csv
-Day,Temperature,Sales
-Mon,35,450
-Tue,33,520
-Wed,30,580
+### Biological/Business Context
+Small business owners intuitively recognize weekly patterns. This exercise makes that intuition quantitative and testable.
+
+---
+
+## Dataset 2: Temperature and Tea Sales
+**File:** `chapter_02a_temperature_sales.csv`  
+**Problem:** 2A.2 (⭐⭐ Medium)  
+**Concept:** Least squares regression, correlation, model interpretation
+
+### Description
+Rajesh suspects temperature affects his tea sales. He collects data over 8 days, recording temperature and daily revenue along with weather conditions.
+
+### Variables
+| Column | Type | Description | Unit/Values |
+|--------|------|-------------|-------------|
+| Day | Integer | Day number | 1-8 |
+| Temperature_C | Integer | Daily maximum temperature | °Celsius |
+| Sales_Rs | Integer | Daily revenue | ₹ (Rupees) |
+| Weather | String | Weather condition | Sunny/Cloudy/Rainy |
+
+### Data Summary
+- **Observations:** 8 days
+- **Temperature Range:** 26°C to 37°C
+- **Sales Range:** ₹440 to ₹780
+- **Correlation:** Negative (cooler days = higher sales)
+- **Expected Model:** Sales ≈ 1546 - 30.5 × Temperature
+
+### Research Questions
+1. What is the relationship between temperature and sales?
+2. Calculate the least squares regression line
+3. For every 1°C increase, how do sales change?
+4. Can we predict sales for a 32°C day?
+5. What percentage of variation does temperature explain (R²)?
+
+### Key Insight
+This is THE core example from the book (Chapter 2, pages 74-75). Students learn:
+- How to calculate slope and intercept manually
+- Interpreting negative relationships
+- Model validation through residuals
+- Real-world limitations (weather type matters too!)
+
+### Expected Results
 ```
-
-**Use Case:** Building your first linear model, understanding slope and intercept, negative correlation
-
-**Key Pattern:** As temperature increases, sales decrease (people drink less hot tea)
-
----
-
-#### 2. `study_scores.csv`
-
-**Description:** Student study hours and corresponding test scores
-
-**Columns:**
-- `StudyHours` (int): Hours studied before test
-- `TestScore` (int): Score achieved (out of 100)
-
-**Sample Data:**
-```csv
-StudyHours,TestScore
-2,65
-3,70
-4,75
-```
-
-**Use Case:** Personal application of modeling, understanding model interpretation
-
-**Key Pattern:** Linear relationship with diminishing returns at high study hours
-
----
-
-#### 3. `rajesh_two_weeks.csv`
-
-**Description:** Extended dataset combining Week 1 and Week 2 for more robust fitting
-
-**Columns:**
-- `Day` (string): Day identifier (W1-Mon, W1-Tue, ..., W2-Mon, ...)
-- `Temperature` (float): Daily temperature in °C
-- `Sales` (int): Daily sales in rupees (₹)
-
-**Use Case:** Demonstrating how more data improves model reliability
-
----
-
-#### 4. `kamala_pricing.csv`
-
-**Description:** Kamala's vegetable pricing strategy throughout the day
-
-**Columns:**
-- `Time` (string): Time of day (7 AM, 10 AM, 1 PM, 4 PM, 7 PM)
-- `Price` (int): Price per kg in rupees (₹/kg)
-- `DemandFactor` (float): Customer demand multiplier
-- `QualityFactor` (float): Freshness/quality factor
-
-**Sample Data:**
-```csv
-Time,Price,DemandFactor,QualityFactor
-7 AM,40,1.2,1.0
-10 AM,38,1.0,0.95
-1 PM,35,1.0,0.9
-```
-
-**Use Case:** Multi-factor optimization, business decision modeling
-
----
-
-#### 5. `rajesh_week3_validation.csv`
-
-**Description:** Week 3 data for model validation and error analysis
-
-**Columns:**
-- `Day` (string): Day of week
-- `Temperature` (float): Daily temperature in °C
-- `ActualSales` (int): Actual sales in rupees (₹)
-- `Weather` (string): Weather condition (Sunny, Cloudy, Light Rain, Heavy Rain)
-
-**Use Case:** Testing predictions, residual analysis, discovering model limitations
-
----
-
-#### 6. `rajesh_complete_data.csv`
-
-**Description:** Complete 20-day dataset with all variables for comprehensive modeling
-
-**Columns:**
-- `Day` (int): Day number (1-20)
-- `Temperature` (float): Daily temperature in °C
-- `DayOfWeek` (int): Day of week (1=Monday, 7=Sunday)
-- `Weather` (int): Weather code (0=Sunny, 1=Cloudy, 2=Rainy)
-- `Sales` (int): Daily sales in rupees (₹)
-
-**Use Case:** Comparing simple vs. multi-variable models, feature importance
-
----
-
-### Extended Biological Datasets
-
-#### 1. `chapter_02_rice_yields.csv`
-
-**Problem:** Rice Yield Model  
-**Rows:** 8 (years 2016-2023)  
-**Columns:** 4
-
-**Variables:**
-- `Year`: Year of observation
-- `Fertilizer_kg_per_hectare`: Fertilizer application rate (kg/ha)
-- `Rainfall_mm`: Total seasonal rainfall (mm)
-- `Yield_tonnes_per_hectare`: Rice yield (tonnes/ha)
-
-**Usage:** Multi-variable regression, model comparison, agricultural optimization
-
-**Source:** Based on typical Punjab rice farming patterns
-
-**Key Question:** How do fertilizer and rainfall interact to determine yield?
-
----
-
-#### 2. `chapter_02_mosquito_population.csv`
-
-**Problem:** Population Growth Modeling  
-**Rows:** 36 (daily observations)  
-**Columns:** 8
-
-**Variables:**
-- `Day`: Day number (0-35)
-- `Population_Count`: Estimated mosquito count
-- `Weather`: Weather condition
-- `Temperature_C`: Daily temperature (°C)
-- `Humidity_Percent`: Relative humidity (%)
-- `Notes`: Observation notes
-
-**Usage:** Exponential vs. logistic growth comparison, carrying capacity identification, intervention timing
-
-**Pattern:** Clear transition from exponential (days 0-15) to logistic growth (days 15-35)
-
-**Key Question:** When does exponential growth break down and why?
-
----
-
-#### 3. `chapter_02_bird_migration.csv`
-
-**Problem:** Climate Change Phenology  
-**Rows:** 10 (years 2014-2023)  
-**Columns:** 8
-
-**Variables:**
-- `Year`: Year of observation
-- `Arrival_Day_of_Year`: Day when first birds arrive (1-365)
-- `Arrival_Date`: Actual calendar date
-- `Departure_Temperature_C`: Temperature at departure location (°C)
-- `Departure_Location_Latitude`: Latitude of departure site
-- `Flight_Duration_Days`: Migration duration (days)
-- `Number_of_Birds`: Flock size
-- `Weather_Conditions`: Weather during migration
-
-**Species:** Siberian Crane (*Leucogeranus leucogeranus*) migrating to Bharatpur Bird Sanctuary
-
-**Usage:** Temperature-phenology relationships, climate trend analysis, prediction of future arrival dates
-
-**Key Question:** How is climate change affecting migration timing?
-
----
-
-#### 4. `chapter_02_enzyme_kinetics.csv`
-
-**Problem:** Michaelis-Menten Model  
-**Rows:** 21 (7 concentrations × 3 replicates)  
-**Columns:** 6
-
-**Variables:**
-- `Substrate_Concentration_mM`: Substrate concentration (mM)
-- `Velocity_umol_per_min`: Reaction velocity (μmol/min)
-- `Replicate`: Replicate number (1-3)
-- `Temperature_C`: Reaction temperature (37°C)
-- `pH`: Reaction pH (7.0)
-- `Enzyme_Concentration_ug_per_mL`: Enzyme concentration (μg/mL)
-
-**Enzyme:** Amylase (digestive enzyme that breaks down starch)
-
-**Usage:** Non-linear curve fitting, Vmax and Km estimation, Lineweaver-Burk transformation
-
-**Expected Parameters:** Vmax ≈ 10.1 μmol/min, Km ≈ 2.0 mM
-
-**Key Question:** How does substrate concentration affect reaction rate?
-
----
-
-#### 5. `chapter_02_tree_growth.csv`
-
-**Problem:** Model Selection Challenge  
-**Rows:** 10 (ages 5-50 years)  
-**Columns:** 7
-
-**Variables:**
-- `Age_years`: Tree age (years)
-- `Height_meters`: Tree height (m)
-- `DBH_cm`: Diameter at breast height (cm)
-- `Crown_Width_m`: Crown width (m)
-- `Location`: Plot location in Western Ghats
-- `Species`: *Tectona grandis* (Teak)
-- `Health_Status`: Tree health assessment
-
-**Usage:** Compare linear, exponential, logistic, and power law models; AIC-based model selection
-
-**Pattern:** Clear logistic growth with asymptote near 30 meters
-
-**Key Question:** Which mathematical model best describes tree growth?
-
----
-
-#### 6. `chapter_02_tea_stall_weather.csv`
-
-**Problem:** Categorical Predictors  
-**Rows:** 14 (2 weeks)  
-**Columns:** 8
-
-**Variables:**
-- `Day`: Day number
-- `Day_of_Week`: Weekday name
-- `Weather`: Weather condition (Sunny/Cloudy/Rainy)
-- `Customers`: Number of customers
-- `Temperature_C`: Temperature (°C)
-- `Rainfall_mm`: Rainfall amount (mm)
-- `Holiday`: Yes/No
-- `Time_Open_Hours`: Hours stall was open
-
-**Usage:** Handling categorical variables, multiple predictor types, business optimization
-
-**Pattern:** Weather categories have strong effects beyond just temperature
-
----
-
-#### 7. `chapter_02_antibiotic_resistance.csv`
-
-**Problem:** Epidemiological Modeling  
-**Rows:** 6 (years 2018-2023)  
-**Columns:** 8
-
-**Variables:**
-- `Year`: Year
-- `Resistant_Percentage`: % of resistant infections
-- `Total_Infections_Tested`: Sample size
-- `Resistant_Cases`: Absolute number of resistant cases
-- `Antibiotic_Usage_DDD_per_1000`: Antibiotic usage metric
-- `Hospital_Beds`: Number of hospital beds
-- `ICU_Beds`: Number of ICU beds
-- `Notes`: Context information
-
-**Usage:** Model comparison (linear vs. exponential vs. logistic), intervention effect analysis
-
-**Pattern:** Accelerating resistance through 2021, intervention effect visible 2022+
-
-**Key Question:** Which model best predicts future resistance trends?
-
----
-
-#### 8. `chapter_02_predator_prey_timeseries.csv`
-
-**Problem:** Population Dynamics  
-**Rows:** 24 (quarterly 2018-2023)  
-**Columns:** 8
-
-**Variables:**
-- `Year`, `Month`: Time identifiers
-- `Chital_Count`: Chital/spotted deer population (prey)
-- `Tiger_Count`: Tiger population (predator)
-- `Habitat_Quality_Index`: Habitat quality (0-1)
-- `Rainfall_mm`: Quarterly rainfall
-- `Poaching_Incidents`: Poaching events
-- `Tourist_Visits`: Tourism pressure
-
-**Location:** Kanha National Park, Madhya Pradesh
-
-**Usage:** Lotka-Volterra dynamics, equilibrium analysis, parameter estimation
-
-**Pattern:** Oscillating populations with predator lagging prey by ~1 quarter
-
----
-
-#### 9. `chapter_02_asiatic_lion_population.csv`
-
-**Problem:** Population Viability Analysis  
-**Rows:** 14 (years 2010-2023)  
-**Columns:** 13
-
-**Variables:**
-- `Year`: Year
-- `Total_Population`: Total census count
-- `Males`, `Females`, `Cubs`: Demographic breakdown
-- `Sub_Adults`, `Adults`: Age structure
-- `Territory_km2`: Protected area size (1412 km²)
-- `Genetic_Diversity_He`: Expected heterozygosity
-- `Effective_Population_Size`: Ne (genetic)
-- `Mortality_Events`: Number of deaths
-- `Disease_Outbreaks`: Disease events
-- `Human_Conflict_Deaths`: Human-wildlife conflict
-
-**Location:** Gir Forest National Park, Gujarat
-
-**Usage:** PVA modeling, stochastic projection, genetic diversity assessment, extinction risk
-
-**Pattern:** Steady population growth but declining genetic diversity
-
-**Key Question:** Can the population persist long-term given genetic constraints?
-
----
-
-#### 10. `chapter_02_sir_outbreak_example.csv`
-
-**Problem:** Disease Outbreak Modeling  
-**Rows:** 31 (days 0-30)  
-**Columns:** 8
-
-**Variables:**
-- `Day`: Day of outbreak
-- `Susceptible`, `Infected`, `Recovered`: SIR compartments
-- `New_Cases`: Daily new infections
-- `Cumulative_Cases`: Total cases
-- `R_effective`: Time-varying reproduction number
-- `Intervention_Active`: Whether control measures active
-
-**Parameters:** β = 0.5/day (baseline), γ = 0.1/day, N = 5000 students
-
-**Usage:** SIR model validation, R₀ calculation, intervention effect analysis
-
-**Pattern:** Intervention on day 10 flattens curve, R_effective drops below 1
-
-**Key Question:** How effective are different intervention strategies?
-
----
-
-## 🔍 Data Characteristics
-
-### Temperature Range (Tea Stall Data)
-- **Minimum:** 25°C (cool monsoon day)
-- **Maximum:** 38°C (peak summer)
-- **Mean:** ~31°C
-- **Context:** Typical Odisha summer temperatures
-
-### Sales Patterns
-- **Minimum:** ₹326 (very hot day, 40°C)
-- **Maximum:** ₹784 (cool rainy day, 25°C)
-- **Mean:** ~₹594
-- **Correlation:** Strong negative with temperature (r ≈ -0.85)
-
-### Weather Distribution
-- **Sunny:** ~50% (Weather = 0)
-- **Cloudy:** ~30% (Weather = 1)
-- **Rainy:** ~20% (Weather = 2)
-
-### Day of Week Effects
-- **Weekdays:** Variable, work-pattern driven
-- **Saturday:** Higher (market day effect)
-- **Sunday:** Highest (leisure time)
-
----
-
-## 💾 Loading Data
-
-### Python (Pandas - Recommended)
-
-```python
-import pandas as pd
-
-# Load dataset
-df = pd.read_csv('chapter_02_rice_yields.csv')
-
-# View first rows
-print(df.head())
-
-# Access columns
-fertilizer = df['Fertilizer_kg_per_hectare']
-yields = df['Yield_tonnes_per_hectare']
-
-# Basic statistics
-print(df.describe())
-
-# Check for missing values
-print(df.isnull().sum())
-```
-
-### Python (NumPy - For arrays)
-
-```python
-import numpy as np
-
-# Load data (skip header)
-data = np.loadtxt('chapter_02_rice_yields.csv', 
-                  delimiter=',', 
-                  skiprows=1,
-                  usecols=(1, 3))  # Fertilizer and Yield
-
-fertilizer = data[:, 0]
-yields = data[:, 1]
-```
-
-### R
-
-```r
-# Load dataset
-df <- read.csv('chapter_02_rice_yields.csv')
-
-# View structure
-str(df)
-head(df)
-summary(df)
-
-# Access columns
-fertilizer <- df$Fertilizer_kg_per_hectare
-yields <- df$Yield_tonnes_per_hectare
-
-# Check for NAs
-sum(is.na(df))
+Model: Sales = 1546 - 30.5 × Temperature
+R² ≈ 0.70 (70% of variation explained)
+Interpretation: Each 1°C warmer → ₹30.50 less revenue
 ```
 
 ---
 
-## 📈 Quick Visualization Examples
+## Dataset 3: Study Hours and Test Scores
+**File:** `chapter_02a_study_hours.csv`  
+**Problem:** 2A.3 (⭐⭐ Medium)  
+**Concept:** Personal data modeling, linear regression, reality checks
 
-### Python
+### Description
+A student tracks study time and test performance over 8 tests to understand the relationship and optimize study strategy.
 
-```python
-import matplotlib.pyplot as plt
+### Variables
+| Column | Type | Description | Unit |
+|--------|------|-------------|------|
+| StudyHours | Integer | Hours studied for test | hours |
+| TestScore | Integer | Test score achieved | points (0-100) |
 
-# Simple scatter plot
-plt.figure(figsize=(10, 6))
-plt.scatter(df['Fertilizer_kg_per_hectare'], 
-            df['Yield_tonnes_per_hectare'],
-            s=100, alpha=0.6, edgecolors='black')
-plt.xlabel('Fertilizer (kg/ha)', fontsize=12)
-plt.ylabel('Yield (tonnes/ha)', fontsize=12)
-plt.title('Rice Yield vs Fertilizer Application', fontsize=14)
-plt.grid(True, alpha=0.3)
-plt.show()
+### Data Summary
+- **Observations:** 8 tests
+- **Study Hours Range:** 2-9 hours
+- **Score Range:** 65-90 points
+- **Expected Model:** Score ≈ 62 + 3.17 × Hours
 
-# Multiple subplots
-fig, axes = plt.subplots(1, 2, figsize=(14, 5))
+### Research Questions
+1. For each additional hour studied, how many points gained?
+2. What does the intercept represent (baseline knowledge)?
+3. Is the relationship truly linear? (Diminishing returns?)
+4. Predict score for 10 hours of study
+5. What factors does this model ignore?
 
-# Fertilizer effect
-axes[0].scatter(df['Fertilizer_kg_per_hectare'], df['Yield_tonnes_per_hectare'])
-axes[0].set_title('Fertilizer Effect')
-axes[0].set_xlabel('Fertilizer (kg/ha)')
-axes[0].set_ylabel('Yield (tonnes/ha)')
+### Key Insight
+This is a direct example from the book (Chapter 2, pages 76-77). Perfect for students because:
+- Personal relevance (their own study habits!)
+- Easy to understand variables
+- Raises questions about model assumptions
+- Reality check: constant slope assumes no diminishing returns
 
-# Rainfall effect
-axes[1].scatter(df['Rainfall_mm'], df['Yield_tonnes_per_hectare'], color='blue')
-axes[1].set_title('Rainfall Effect')
-axes[1].set_xlabel('Rainfall (mm)')
-axes[1].set_ylabel('Yield (tonnes/ha)')
-
-plt.tight_layout()
-plt.show()
+### Expected Results
 ```
-
-### R
-
-```r
-# Simple scatter plot
-plot(df$Fertilizer_kg_per_hectare, df$Yield_tonnes_per_hectare,
-     xlab = "Fertilizer (kg/ha)",
-     ylab = "Yield (tonnes/ha)",
-     main = "Rice Yield vs Fertilizer",
-     pch = 19, col = "darkgreen", cex = 1.5)
-grid()
-
-# Add trend line
-abline(lm(Yield_tonnes_per_hectare ~ Fertilizer_kg_per_hectare, data = df),
-       col = "red", lwd = 2, lty = 2)
+Model: Score = 62.0 + 3.17 × StudyHours
+R² ≈ 0.98 (very high correlation)
+Interpretation: Each extra hour → +3.2 points
+Reality check: Assumes linear returns (may not hold at extremes)
 ```
 
 ---
 
-## 🔧 Data Preprocessing Tips
+## Dataset 4: Kamala's Vegetable Pricing
+**File:** `chapter_02a_kamala_pricing.csv`  
+**Problem:** 2A.4 (⭐⭐ Medium)  
+**Concept:** Dynamic pricing, optimization, demand curves
 
-### Handle Missing Values
+### Description
+Kamala adjusts tomato prices throughout the day. This data reveals her intuitive demand curve and optimization strategy.
 
-```python
-# Check for missing values
-print(df.isnull().sum())
+### Variables
+| Column | Type | Description | Unit |
+|--------|------|-------------|------|
+| TimeOfDay | String | Time period | Morning/MidMorning/etc. |
+| Hour | Integer | Hour of day (24-hr) | 8-18 |
+| Price_Rs_per_kg | Integer | Price per kilogram | ₹/kg |
+| Kg_Sold | Integer | Quantity sold | kg |
+| Revenue_Rs | Integer | Total revenue (Price × Quantity) | ₹ |
 
-# Drop rows with any missing values
-df_clean = df.dropna()
+### Data Summary
+- **Observations:** 6 time points through the day
+- **Price Range:** ₹20 to ₹40 per kg
+- **Quantity Range:** 25-40 kg sold per period
+- **Revenue Range:** ₹600 to ₹1,140
 
-# Fill missing values with mean
-df['Sales'].fillna(df['Sales'].mean(), inplace=True)
+### Research Questions
+1. How do price and quantity relate? (Demand curve)
+2. What pricing maximizes revenue?
+3. Why does Kamala drop prices in the evening?
+4. Build model: Quantity = f(Price)
+5. What factors does this model ignore? (Quality degradation, competition)
 
-# Fill with forward fill (time series)
-df['Sales'].fillna(method='ffill', inplace=True)
-```
+### Key Insight
+From Chapter 2 (pages 62-63): Kamala uses "dynamic optimization" intuitively. This data makes her strategy explicit and testable.
 
-### Normalize/Standardize Data
-
-```python
-from sklearn.preprocessing import StandardScaler
-
-# Standardize (mean=0, std=1)
-scaler = StandardScaler()
-df['Temperature_normalized'] = scaler.fit_transform(df[['Temperature']])
-
-# Min-max scaling (0-1 range)
-from sklearn.preprocessing import MinMaxScaler
-scaler = MinMaxScaler()
-df['Temperature_scaled'] = scaler.fit_transform(df[['Temperature']])
-```
-
-### Create Derived Features
-
-```python
-# Temperature categories
-df['TempCategory'] = pd.cut(df['Temperature'], 
-                             bins=[0, 28, 33, 40],
-                             labels=['Cool', 'Moderate', 'Hot'])
-
-# Sales performance categories
-df['Performance'] = pd.cut(df['Sales'],
-                            bins=[0, 500, 650, 1000],
-                            labels=['Low', 'Medium', 'High'])
-
-# Interaction term
-df['Temp_x_Weather'] = df['Temperature'] * df['Weather']
-```
+### Expected Pattern
+- Higher prices → lower quantity (standard demand curve)
+- But revenue peaks at mid-range prices
+- Evening discounts prevent spoilage (perishable goods)
 
 ---
 
-## 🧪 Data Validation
+## Dataset 5: Babulal's Monsoon Prediction
+**File:** `chapter_02a_monsoon_prediction.csv`  
+**Problem:** 2A.5 (⭐⭐⭐ Hard)  
+**Concept:** Multi-variable models, traditional knowledge, model comparison
 
-### Statistical Checks
+### Description
+Babulal tracks environmental indicators to predict monsoon arrival in western Odisha over 10 years (2014-2023).
 
-```python
-# Check correlations
-corr_matrix = df[['Temperature', 'Sales', 'Rainfall_mm']].corr()
-print(corr_matrix)
+### Variables
+| Column | Type | Description | Unit/Range |
+|--------|------|-------------|------------|
+| Year | Integer | Year of observation | 2014-2023 |
+| AntDepth_cm | Integer | Depth of ant burrows | cm (9-17) |
+| MahuaFlowering_Day | Integer | Day of year mahua flowers | Day 126-142 |
+| PeacockCalls_PerDay | Integer | Average peacock calls | count (5-15) |
+| MonsoonDay_OfYear | Integer | Actual monsoon arrival | Day 158-178 |
 
-# Temperature should negatively correlate with sales
-assert df['Temperature'].corr(df['Sales']) < 0, "Expected negative correlation"
+### Data Summary
+- **Observations:** 10 years
+- **Monsoon Range:** Day 158 to 178 (June 7 to June 27)
+- **Average Arrival:** Day 167 (mid-June)
+- **Traditional Accuracy:** Babulal achieves 80-85% accuracy
 
-# Check variance
-print(f"Temperature variance: {df['Temperature'].var():.2f}")
-print(f"Sales variance: {df['Sales'].var():.2f}")
-```
+### Research Questions
+1. Which single variable best predicts monsoon arrival?
+2. Build three single-variable models and compare R²
+3. Does combining all three improve predictions?
+4. Train on 2014-2020, test on 2021-2023
+5. How does mathematical model compare to traditional knowledge?
 
-### Data Integrity Checks
+### Biological Context
+From Chapter 2 (pages 59-61): Traditional weather prediction based on environmental cues. This data tests whether these folk observations have scientific validity.
 
-```python
-# Realistic ranges
-assert df['Temperature'].min() >= 20, "Temperature too low!"
-assert df['Temperature'].max() <= 45, "Temperature too high!"
+### Expected Relationships
+- **Ant Depth:** Deeper burrows → earlier monsoon (insects sense atmospheric changes)
+- **Mahua Flowering:** Earlier flowering → earlier monsoon (plant phenology responds to climate)
+- **Peacock Calls:** More calls → earlier monsoon (bird behavior reflects weather patterns)
 
-# Positive values
-assert (df['Sales'] > 0).all(), "Sales must be positive!"
-
-# No duplicates
-assert df.duplicated().sum() == 0, "Duplicate rows found!"
-
-# Correct data types
-assert df['Temperature'].dtype in ['float64', 'int64']
-assert df['Day'].dtype == 'object'  # String
-```
-
----
-
-## 📚 Problem-Dataset Mapping
-
-### Core Examples
-
-| Problem | Dataset | Focus | Difficulty |
-|---------|---------|-------|-----------|
-| 2.1 | rajesh_weekly_sales | First linear model | ⭐ Easy |
-| 2.2 | study_scores | Personal application | ⭐ Easy |
-| 2.3 | rajesh_two_weeks | Least squares calculation | ⭐⭐ Medium |
-| 2.4 | kamala_pricing | Multi-factor optimization | ⭐⭐ Medium |
-| 2.5 | rajesh_week3_validation | Model validation | ⭐⭐ Medium |
-| 2.6 | rajesh_complete_data | Model comparison | ⭐⭐⭐ Hard |
-
-### Extended Biological Applications
-
-| Problem | Dataset | Model Type | Difficulty |
-|---------|---------|-----------|-----------|
-| 2.1 | tea_stall_weather | Categorical regression | ⭐ Easy |
-| 2.2 | rice_yields | Multiple regression | ⭐⭐ Medium |
-| 2.3 | mosquito_population | Exponential/Logistic | ⭐⭐ Medium |
-| 2.4 | antibiotic_resistance | Model comparison | ⭐⭐⭐ Hard |
-| 2.5 | bird_migration | Climate trends | ⭐⭐ Medium |
-| 2.6 | predator_prey_timeseries | Lotka-Volterra | ⭐⭐⭐ Hard |
-| 2.7 | sir_outbreak_example | SIR disease model | ⭐⭐⭐ Hard |
-| 2.8 | enzyme_kinetics | Michaelis-Menten | ⭐⭐ Medium |
-| 2.9 | asiatic_lion_population | Population viability | ⭐⭐⭐ Hard |
-| 2.10 | tree_growth | Model selection | ⭐⭐⭐ Hard |
+### Key Insight
+Traditional knowledge encoded as multivariate predictive model. Students see that folk wisdom often has quantitative foundation.
 
 ---
 
-## 🎓 Learning Pathway
+## Dataset 6: Commute Time Optimizer
+**File:** `chapter_02a_commute_optimizer.csv`  
+**Problem:** 2A.6 (⭐ Easy)  
+**Concept:** Optimization, decision models, multiple factors
 
-### **Beginner** (Week 1-2)
-1. ✅ Start with `rajesh_weekly_sales.csv`
-2. ✅ Calculate slope and intercept by hand
-3. ✅ Understand model interpretation
-4. ✅ Try `study_scores.csv` for personal connection
-5. ✅ Move to `rajesh_two_weeks.csv` for validation
+### Description
+Daily commute data tracking different routes, traffic conditions, and travel times over 2 weeks.
 
-### **Intermediate** (Week 3-4)
-1. ✅ Master core examples (all 6 files)
-2. ✅ Try 2-3 biological datasets (rice, mosquito, bird)
-3. ✅ Compare different model types
-4. ✅ Practice biological interpretation
+### Variables
+| Column | Type | Description | Unit/Values |
+|--------|------|-------------|-------------|
+| Day | String | Day of week | Monday-Friday |
+| Week | Integer | Week number | 1-2 |
+| Route | String | Route taken | NH16/Janpath/Patrapada |
+| Distance_km | Integer | Route distance | km |
+| TrafficLevel | Integer | Traffic intensity | 1-10 scale |
+| Time_min | Integer | Actual commute time | minutes |
 
-### **Advanced** (Week 5+)
-1. ✅ Complete all extended biological datasets
-2. ✅ Perform rigorous model comparison
-3. ✅ Collect and model your own data
-4. ✅ Write formal methods and results
+### Data Summary
+- **Observations:** 10 commutes
+- **Routes:** 3 different (NH16=12km, Janpath=10km, Patrapada=11km)
+- **Traffic Range:** 5-9 (moderate to heavy)
+- **Time Range:** 32-50 minutes
 
----
+### Research Questions
+1. Which route is fastest on average?
+2. How much does traffic affect commute time?
+3. Build model: Time = f(Distance, Traffic)
+4. Create decision rule for route selection
+5. What other factors matter? (Weather, time of day, road conditions)
 
-## 📋 Creating Your Own Dataset
-
-### Template Structure
-
-```csv
-Variable1,Variable2,Variable3
-value1_1,value1_2,value1_3
-value2_1,value2_2,value2_3
-...
-```
-
-### Example: Generate Synthetic Data
-
-```python
-import pandas as pd
-import numpy as np
-
-# Set seed for reproducibility
-np.random.seed(42)
-
-# Generate data
-n = 20
-temperature = np.random.uniform(25, 38, n)
-sales = 1550 - 30*temperature + np.random.normal(0, 20, n)
-
-# Create DataFrame
-df = pd.DataFrame({
-    'Day': range(1, n+1),
-    'Temperature': temperature.round(1),
-    'Sales': sales.astype(int)
-})
-
-# Save
-df.to_csv('my_tea_stall_data.csv', index=False)
-print("Custom dataset created!")
-```
+### Biological/Behavioral Context
+From Chapter 2 (pages 69-70): Daily route optimization is unconscious "Dijkstra's algorithm" - finding optimal paths through networks.
 
 ---
 
-## ⚠️ Data Usage Notes
+## Using These Datasets
 
-### Academic Use
-✅ **Free** for educational purposes  
-✅ **Cite as:** Patel, A. (2026). *The Pattern Hunters* - Chapter 2 Datasets  
-✅ **Modify** for your own exercises  
-✅ **Share** with proper attribution
+### Learning Progression
 
-### Limitations
-- Core datasets simplified for pedagogy
-- Extended datasets simulated (not actual field data)
-- Some values rounded for clarity
-- Weather categories simplified
+**Level 1 (Problems 2A.1, 2A.6):** Basic patterns and averages
+- Recognize patterns visually
+- Calculate simple statistics
+- Make qualitative predictions
 
-### Real-World Application
-When working with real data:
-- Collect 50+ data points when possible
-- Include measurement errors
-- Document data collection methods
-- Account for confounding variables
-- Validate models with holdout data
+**Level 2 (Problems 2A.2, 2A.3, 2A.4):** Linear regression
+- Calculate least squares manually
+- Interpret slope and intercept
+- Make quantitative predictions
+- Calculate R²
+
+**Level 3 (Problems 2A.5, 2A.7, 2A.8):** Advanced concepts
+- Multi-variable models
+- Model assumptions and limitations
+- Residual analysis
+- Model comparison and validation
+
+### Common Analyses Across All Datasets
+
+1. **Visual Inspection:** Always plot first!
+2. **Calculate Means:** Get baseline understanding
+3. **Least Squares:** Find best-fit line manually
+4. **Interpret Coefficients:** What do slope/intercept mean biologically?
+5. **Calculate R²:** How much variation explained?
+6. **Residual Analysis:** Where does model fail?
+7. **Make Predictions:** Test on new data
+8. **Reality Check:** When does model break?
 
 ---
 
-## 🔗 Additional Resources
+## Technical Notes
+
+### Data Format
+- All files are CSV (comma-separated values)
+- Headers in first row
+- No missing values
+- Ready for Excel, R, Python, or manual calculation
+
+### Units and Conventions
+- **Currency:** Indian Rupees (₹)
+- **Temperature:** Celsius (°C)
+- **Distance:** Kilometers (km)
+- **Time:** Minutes or hours (specified)
+- **Day of Year:** 1 = January 1, 365 = December 31
+
+### Recommended Tools
+- **Spreadsheet:** Excel, Google Sheets (beginners)
+- **Programming:** Python (pandas, numpy, matplotlib)
+- **Statistics:** R, SPSS
+- **Manual Calculation:** Possible for all datasets!
+
+---
+
+## Pedagogical Notes
+
+### Why These Examples?
+
+**1. Cultural Relevance:**
+- Rajesh (tea stall) and Kamala (vegetable vendor) are relatable Indian contexts
+- Babulal's traditional knowledge honors indigenous science
+- Students see math in their daily lives
+
+**2. Gradual Complexity:**
+- Start with simple patterns (weekly sales)
+- Build to regression (temperature-sales)
+- Advance to multi-variable models (monsoon prediction)
+
+**3. Real-World Messiness:**
+- Data includes noise and outliers
+- Models never fit perfectly
+- Students learn "all models are wrong, but some are useful"
+
+**4. Multiple Perspectives:**
+- Business optimization (Rajesh, Kamala)
+- Personal improvement (study habits, commute)
+- Traditional knowledge (Babulal)
+- Each shows modeling applies universally
+
+### Common Student Challenges
+
+**Challenge 1:** "Why doesn't R² = 1.0?"
+- **Answer:** Real data has noise. Perfect fit would be overfitting.
+
+**Challenge 2:** "The model predicts negative sales at 50°C!"
+- **Answer:** Models have domains. Extrapolation fails. Teach limitations.
+
+**Challenge 3:** "Traditional knowledge seems less precise than the model."
+- **Answer:** Traditional knowledge includes qualitative factors models miss. Discuss complementarity.
+
+**Challenge 4:** "I can't do least squares by hand!"
+- **Answer:** Break into steps. Provide worked example. Use calculator.
+
+---
+
+## Connection to Book Content
+
+### Direct Book Examples
+- **Temperature-Sales:** Pages 74-75 (exact model shown)
+- **Study Hours:** Pages 76-77 (exact model shown)
+- **Rajesh's Business:** Pages 56-59 (narrative context)
+- **Kamala's Pricing:** Pages 62-63 (optimization discussion)
+- **Babulal's Prediction:** Pages 59-61 (traditional knowledge)
+
+### Key Quotes to Remember
+1. **"Mathematics is organized intuition"** (p. 65)
+2. **"All models are wrong, but some are useful"** (p. 80 - Box's Law)
+3. **"Making the invisible visible"** (p. 81)
+
+### Learning Objectives Alignment
+These datasets directly support Chapter 2's learning objectives:
+- ✅ Transform intuitive observations into testable models
+- ✅ Build simple mathematical relationships using least squares
+- ✅ Distinguish useful simplifications from oversimplifications
+- ✅ Apply the scientific pipeline from pattern to model refinement
+
+---
+
+## Dataset Quality and Validation
+
+### Data Generation Method
+- Datasets were created to match book examples exactly where applicable
+- Other datasets designed to exhibit clear linear relationships
+- Realistic noise levels added to avoid "too perfect" fits
+- All values checked for biological/practical plausibility
+
+### Expected R² Values
+- **Temperature-Sales:** ~0.70 (strong negative correlation)
+- **Study Hours:** ~0.98 (very strong positive correlation)
+- **Monsoon Prediction (single variable):** ~0.60-0.75
+- **Commute Optimizer:** ~0.80 (traffic has strong effect)
+
+### Validation Checks Performed
+✅ No impossible values (e.g., negative sales)  
+✅ Ranges realistic for context  
+✅ Relationships match expected biological/economic principles  
+✅ Sufficient variation for interesting analysis  
+✅ Not so perfect that students suspect fake data  
+
+---
+
+## Suggested Exercises by Difficulty
+
+### ⭐ Beginner (First exposure to modeling)
+- Problem 2A.1: Recognize weekly patterns
+- Problem 2A.6: Understand optimization
+- Focus on visual patterns and simple averages
+
+### ⭐⭐ Intermediate (Learning regression)
+- Problem 2A.2: Temperature-sales (THE core example)
+- Problem 2A.3: Study hours (personal relevance)
+- Problem 2A.4: Pricing optimization
+- Focus on least squares calculation and interpretation
+
+### ⭐⭐⭐ Advanced (Deeper understanding)
+- Problem 2A.5: Multi-variable monsoon model
+- Problem 2A.7: Model assumptions analysis
+- Problem 2A.8: Residual analysis
+- Problem 2A.9: Formalization theory
+- Problem 2A.10: Student's own data collection
+- Focus on limitations, validation, improvement
+
+---
+
+## Additional Resources
+
+### Manual Calculation Guides
+See individual problem solutions for step-by-step least squares calculations.
 
 ### Code Examples
-- `Chapter_02_Examples.ipynb` - Worked examples with all datasets
-- `least_squares_demo.py` - Step-by-step least squares calculation
-- `model_comparison.py` - Comparing different model types
+Companion Python/R code provided separately showing:
+- Data loading and visualization
+- Least squares implementation from scratch
+- Built-in function comparison
+- Residual plotting
+- R² calculation
 
-### Related Documentation
-- `solutions.md` - Detailed solutions for all problems
-- `data_dictionary.md` - Complete variable definitions
-- `Chapter_02_Dataset_Guide.md` - Comprehensive usage guide
-
-### External Resources
-- [Pandas Documentation](https://pandas.pydata.org/docs/)
-- [Matplotlib Gallery](https://matplotlib.org/stable/gallery/)
-- [R for Data Science](https://r4ds.had.co.nz/)
-
----
-
-## 🤝 Contributing
-
-Have suggestions or found issues?
-1. Open an issue on GitHub
-2. Submit a pull request
-3. Join the discussion forum
-
-Want to contribute your own biological dataset?
-1. Follow our dataset structure
-2. Include comprehensive documentation
-3. Provide example analysis code
-4. Submit for review
+### Assessment Rubrics
+Solutions include:
+- Calculation correctness (40%)
+- Interpretation quality (30%)
+- Biological reasoning (20%)
+- Presentation clarity (10%)
 
 ---
 
-## 📧 Questions?
+## Citation
 
-- **GitHub Issues:** Technical problems or bugs
-- **Discussions:** General questions about usage
-- **Email:** Contact author for other inquiries
+**Book Reference:**
+Patel, A. (2025). *The Pattern Hunters: The Art of Scientific Thinking*. Chapter 2: From Guesswork to Models - The Art of Scientific Thinking, pp. 55-91.
 
----
-
-## 📜 License
-
-All datasets provided under **MIT License** for educational use.
-
-See [LICENSE](../../LICENSE) for full details.
+**Dataset Citation:**
+If using these datasets for teaching or publication:
+> Patel, A. (2025). Chapter 2 Problem Set A Datasets. *The Pattern Hunters: Companion Materials*. Available at: github.com/The-Pattern-Hunter/pattern-hunters-problems
 
 ---
 
-## 🙏 Acknowledgments
-
-Datasets inspired by:
-- Real tea stall observations in Bhubaneswar
-- Published ecological and epidemiological studies
-- Agricultural research from Punjab and Odisha
-- Conservation data from Indian national parks
-
-Special thanks to students and educators who provided feedback during development.
-
----
-
-**Back to:** [Chapter 2 Home](../../README.md) | [Repository Home](../../../../README.md)
-
----
-
-*Last Updated: January 2026*  
-*Version: 2.0*  
-*Datasets: 16 files (6 core + 10 extended)*
+*Datasets created by Dr. Alok Patel*  
+*For The Pattern Hunters: The Art of Scientific Thinking*  
+*Chapter 2: From Guesswork to Models*
